@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec mencoder $1 -oac mp3lame -lameopts preset=64 -ovc xvid -xvidencopts bitrate=600 -of avi -o $2 
