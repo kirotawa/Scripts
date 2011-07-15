@@ -1,3 +1,15 @@
 #!/bin/bash
 
-exec mencoder $1 -oac mp3lame -lameopts preset=64 -ovc xvid -xvidencopts bitrate=600 -of avi -o $2 
+if [ -z $1 ];
+then
+    echo "Use: convert_to_divx file.extension file.avi\n"
+    echo "extension = rmvb, flv ..."
+    exit 1
+elif [ $1 = "-h" ];
+then  
+    echo "Use: convert_to_divx file.extension file.avi\n"
+    echo "extension = rmvb, flv ..."
+    exit 1
+else
+    exec mencoder $1 -oac mp3lame -lameopts preset=64 -ovc xvid -xvidencopts bitrate=600 -of avi -o $2 
+fi
