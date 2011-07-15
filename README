@@ -1,0 +1,6 @@
+
+Files and use:
+
+    - convert_to_divx: put this file in /usr/bin 
+    - type : chmod +x convert_to_divx  (as superuser)
+    - just use it anywhere
