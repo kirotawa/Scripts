@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [ -z $1 ];
+if [ $# -le 1 ];
 then
-    echo "Use: convert_to_divx file.extension file.avi\n"
+    echo "Use: convert_to_divx file.extension file.avi"
     echo "extension = rmvb, flv ..."
     exit 1
 elif [ $1 = "-h" ];
 then  
-    echo "Use: convert_to_divx file.extension file.avi\n"
+    echo "Use: convert_to_divx file.extension file.avi"
     echo "extension = rmvb, flv ..."
     exit 1
 else
