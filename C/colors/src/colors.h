@@ -1,3 +1,9 @@
+/**
+    Author: Leônidas S. Barbosa
+    Email : kirotawa(arroba)gmail(dot)com
+    Year  : 2011
+**/
+
 #ifndef COLORS_H
 #define COLORS_H
 
@@ -32,5 +38,9 @@
 #define DIM printf("\033[2m")
 #define NORMAL printf("\033[22m")
 #define RESETALL printf("\033[0m")
-
+#define UNDERLINE printf("\033[4m")
+#define BLINKSLOW printf("\033[5m")
+#define BLINKRAPID printf("\033[6m")
+#define ITALIC printf("\033[3m")
+#define NEGATIVE printf("\033[7m")
 #endif /* COLORS_H */
