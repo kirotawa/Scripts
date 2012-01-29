@@ -39,4 +39,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         Tracking(sys.argv[1])
     else:
-        print "Uso: python  BrTracking.py codigo_de_rastreio"
+        print "Uso: python  BrMailTracking.py codigo_de_rastreio"
