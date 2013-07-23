@@ -15,7 +15,7 @@ except:
     sys.exit()
 
 # Conf: put your cards numbers here.
-cards = {'ref': '5067540311762029', 'ali': '0000000000000'}
+cards = {'ref': '0000000000000000', 'ali': '0000000000000'}
 
 # Url crawled.
 url = "https://www.cartoesbeneficio.com.br/inst/convivencia/SaldoExtrato.jsp"
