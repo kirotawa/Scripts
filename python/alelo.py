@@ -7,6 +7,7 @@ import sys
 import urllib
 import urllib2
 
+
 try:
     from BeautifulSoup import BeautifulSoup
 except:
@@ -14,22 +15,24 @@ except:
     sys.exit()
 
 # Conf: put your cards numbers here.
-cards = {'ref':'0000000000000', 'ali':'0000000000000'}
+cards = {'ref': '5067540311762029', 'ali': '0000000000000'}
 
 # Url crawled.
-url="http://www.cartoesbeneficio.com.br//inst/convivencia/SaldoExtrato.jsp" 
+url = "https://www.cartoesbeneficio.com.br/inst/convivencia/SaldoExtrato.jsp"
 
-try: 
-    values = {'numeroCartao':cards[sys.argv[1]],'primeiroAcesso':'S'}
+try:
+    values = {'numeroCartao': cards['ref'], 'primeiroAcesso': 'S',
+             'origem': 'Alelo'}
 except:
-    print 'Use: vvale ref or vvale ali'
+    print 'Use: alelo ref or alelo ali'
     sys.exit()
 
 data = urllib.urlencode(values)
-request = urllib2.Request(url,data)
+request = urllib2.Request(url, data)
 
 response = urllib2.urlopen(request)
 document = response.read()
 soup = BeautifulSoup(document)
 
-print 'Seu saldo é:  %s' %  str(soup.findAll('table')[-1].findAll('td')[1].next)
+print 'Seu saldo é:  %s' % str(soup.findAll('table')[-1].
+      findAll('td')[1].next)
