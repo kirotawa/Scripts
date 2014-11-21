@@ -59,7 +59,7 @@ def meta_to_class(cls):
 
 
 @meta_to_class
-class sVirt_IsolationCase(unittest.TestCase):
+class major_Case(unittest.TestCase):
 	
 
 	@args(CMD_LIST)
