@@ -1,0 +1,92 @@
+# -*- coding: utf-8 -*-
+
+
+__author__ = "Leonidas S. Barbosa (kirotawa)"
+__version__ = 0x01
+
+import gtk
+import sys
+import urllib
+import urllib2
+
+
+try:
+    import pynotify
+except:
+    print "É necessário ter o pynotify instalado"
+    sys.exit()
+
+pynotify.init("pyremotejobs")
+
+
+try:
+    from BeautifulSoup import BeautifulSoup
+except:
+    print "É necessário que o BeautifulSoup esteja instalado. \n How to: apt-get \
+        install python-beautifulsoup"
+    sys.exit()
+
+# globals
+import re
+class info:
+    url = "https://weworkremotely.com/" 
+    #tag = "python"
+    #position = "Programming"
+    regex_motor = re.compile(r"[j|J]ava")
+
+def Tracking():
+
+    request = urllib2.Request(info.url)
+    response = urllib2.urlopen(request)
+    document = response.read()
+
+    soup = BeautifulSoup(document)
+
+    sections= soup.find('section', {'class':'jobs','id':'category-2'})
+    lis = sections.findAll('li')
+    import pdb;pdb.set_trace()
+    jobs = list()
+    for li in lis:
+        if li.find('span', {'class':'new'}):
+            if info.regex_motor.search(li.find('span',{'class':'title'}).text):
+                jobs.append({
+                    'link':li.find('a').attrs[0][1],
+                    'company':li.find('span',{'class':'company'}).text,
+                    'title':li.find('span',{'class':'title'}).text,
+                    'date':li.find('span',{'class':'date'}).text,
+                })
+    return jobs
+
+ 
+    """ output = 
+    trs = table.findAll('tr')
+    for tr in trs:
+        tds = tr.findAll('td')
+        for td in tds:
+            if td.text:
+                output += td.text + " "
+            else:
+                print "Sua encomenda ainda não está disponível para tracking no \
+                Brasil."
+
+        output += "\n"
+    if output.replace('\n','').replace(' ','') == code_tracking:
+        return "O objeto não se encontra disponível para rastreio."
+    print output    
+    return output
+    """
+
+def Notify(message):
+    notify = pynotify.Notification(summary="Situação", message=message)
+    notify.set_icon_from_pixbuf(gtk.Label().render_icon(gtk.STOCK_INFO, \
+        gtk.ICON_SIZE_LARGE_TOOLBAR)) 
+    notify.show()
+
+
+if __name__ == "__main__":
+    print Tracking()
+    """ if len(sys.argv) == 2:
+        Notify(Tracking(sys.argv[1]))
+    else:
+        print "Uso: python  BrMailTracking.py codigo_de_rastreio"
+"""
