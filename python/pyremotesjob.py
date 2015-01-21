@@ -13,7 +13,7 @@ import urllib2
 try:
     import pynotify
 except:
-    print "É necessário ter o pynotify instalado"
+    print "Need to install pynotify"
     sys.exit()
 
 pynotify.init("pyremotejobs")
@@ -22,7 +22,7 @@ pynotify.init("pyremotejobs")
 try:
     from BeautifulSoup import BeautifulSoup
 except:
-    print "É necessário que o BeautifulSoup esteja instalado. \n How to: apt-get \
+    print "Need to install BeautifulSoup\
         install python-beautifulsoup"
     sys.exit()
 
@@ -57,24 +57,6 @@ def Tracking():
                 })
     return jobs
 
- 
-    """ output = 
-    trs = table.findAll('tr')
-    for tr in trs:
-        tds = tr.findAll('td')
-        for td in tds:
-            if td.text:
-                output += td.text + " "
-            else:
-                print "Sua encomenda ainda não está disponível para tracking no \
-                Brasil."
-
-        output += "\n"
-    if output.replace('\n','').replace(' ','') == code_tracking:
-        return "O objeto não se encontra disponível para rastreio."
-    print output    
-    return output
-    """
 
 def Notify(message):
     notify = pynotify.Notification(summary="Situação", message=message)
@@ -85,8 +67,3 @@ def Notify(message):
 
 if __name__ == "__main__":
     print Tracking()
-    """ if len(sys.argv) == 2:
-        Notify(Tracking(sys.argv[1]))
-    else:
-        print "Uso: python  BrMailTracking.py codigo_de_rastreio"
-"""
