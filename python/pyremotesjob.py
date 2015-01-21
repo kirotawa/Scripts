@@ -41,7 +41,7 @@ def Tracking():
 
     sections= soup.find('section', {'class':'jobs','id':'category-2'})
     lis = sections.findAll('li')
-    import pdb;pdb.set_trace()
+
     jobs = list()
     for li in lis:
         if li.find('span', {'class':'new'}):
