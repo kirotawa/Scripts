@@ -32,7 +32,7 @@ class info:
     url = "https://weworkremotely.com/" 
     #tag = "python"
     #position = "Programming"
-    regex_motor = re.compile(r"[j|J]ava")
+    regex_motor = re.compile(r"[p|P]ython")
 
 def Tracking():
 
