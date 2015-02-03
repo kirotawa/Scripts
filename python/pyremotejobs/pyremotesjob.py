@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/python
 
 __author__ = "Leonidas S. Barbosa (kirotawa)"
 __version__ = 0x01
 
+import re
 import gtk
 import sys
 import urllib2
@@ -10,26 +11,26 @@ import urllib2
 try:
     import pynotify
 except:
-    print "Need to install pynotify"
+    print("Need to install pynotify")
     sys.exit()
 
 pynotify.init("pyremotejobs")
 
-
 try:
     from BeautifulSoup import BeautifulSoup
 except:
-    print "Need to install BeautifulSoup\
-        install python-beautifulsoup"
+    print("Need to install BeautifulSoup \
+          install python-beautifulsoup")
     sys.exit()
+
 
 # globals
 class info:
     # import just once, so it's okay
-    import re
-    url = "https://weworkremotely.com/" 
-    # hardcoded by default, but in the future someone can pass 
+    url = "https://weworkremotely.com/"
+    # hardcoded by default, but in the future someone can pass
     regex_motor = re.compile(r"[p|P]ython")
+
 
 def Tracking():
 
@@ -39,18 +40,19 @@ def Tracking():
 
     soup = BeautifulSoup(document)
 
-    sections= soup.find('section', {'class':'jobs','id':'category-2'})
+    sections = soup.find('section', {'class': 'jobs', 'id': 'category-2'})
     lis = sections.findAll('li')
 
     jobs = list()
     for li in lis:
-        if li.find('span', {'class':'new'}):
-            if info.regex_motor.search(li.find('span',{'class':'title'}).text):
+        if li.find('span', {'class': 'new'}):
+            if info.regex_motor.search(
+                    li.find('span', {'class': 'title'}).text):
                 jobs.append({
-                    'link':info.url+li.find('a').attrs[0][1],
-                    'company':li.find('span',{'class':'company'}).text,
-                    'title':li.find('span',{'class':'title'}).text,
-                    'date':li.find('span',{'class':'date'}).text,
+                    'link': info.url+li.find('a').attrs[0][1],
+                    'company': li.find('span', {'class': 'company'}).text,
+                    'title': li.find('span', {'class': 'title'}).text,
+                    'date': li.find('span', {'class': 'date'}).text,
                 })
     return jobs
 
