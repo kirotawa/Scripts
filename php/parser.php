@@ -1,10 +1,10 @@
 <?php
- /* GOALS: 
+ /* GOALS:
  * - Numer of entries
- * - Number of errors 
+ * - Number of errors
  * - Number of success
  * - What files were visited more often
- * - the most popular refers and their percentagem
+ * - the most popular refers and their percentage
  * */
 
 # Log file format: <origin> [<date_time>] "<method_and_file>" <status> <bytes> "<refer>"
@@ -32,7 +32,7 @@ while($line = fgets($file)) {
             $hash_table["success"] = 1;
         }
          else {
-            $hash_table["success"] += 1;   
+            $hash_table["success"] += 1;
         }
     }
     if ($matches["status"] >=400 && $matches["status"] <= 599) {
@@ -40,22 +40,22 @@ while($line = fgets($file)) {
             $hash_table["errors"] = 1;
         }
          else {
-            $hash_table["errors"] += 1;   
+            $hash_table["errors"] += 1;
         }
     }
-  
+
     if (!array_key_exists($matches["filepath"], $hash_table["files"])) {
             $hash_table["files"][$matches["filepath"]] = 1;
     }
     else {
-       $hash_table["files"][$matches["filepath"]] += 1;   
+       $hash_table["files"][$matches["filepath"]] += 1;
     }
 
     if (!array_key_exists($matches["refer"], $hash_table["refers"])) {
             $hash_table["refers"][$matches["refer"]] = 1;
     }
     else {
-       $hash_table["refers"][$matches["refer"]] += 1;   
+       $hash_table["refers"][$matches["refer"]] += 1;
     }
     $entries += 1;
 }
