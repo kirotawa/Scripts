@@ -6,7 +6,6 @@ __version__ = 0.2
 
 import gtk
 import sys
-import urllib
 import urllib2
 
 
