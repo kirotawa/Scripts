@@ -1,5 +1,5 @@
 #ifndef __STRINGHANDLE__
-#define __STRINHANDLE__
+#define __STRINGHANDLE__
 
 #include <stdlib.h>
 #include <stdio.h>
