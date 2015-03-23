@@ -28,7 +28,7 @@ def checkout_to_master(git, branch):
         print "Checkouting from %s to master" % (branch)
         git.checkout("master")
         ret = "master"
-    except:
+    except _git.GitCommandError:
         print "Could not change branch to master"
         ret = branch
 
