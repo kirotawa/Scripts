@@ -59,4 +59,8 @@ def exec_pulls(dirs):
 
 if __name__ == '__main__':
     dirs = sys.argv[1:]
+    if not dirs:
+        print "Usage: pygitpull <root_git_directories>"
+        sys.exit(0)
+
     exec_pulls(dirs)
