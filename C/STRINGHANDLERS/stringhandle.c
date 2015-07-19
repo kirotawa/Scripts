@@ -74,3 +74,32 @@ void print_str_to_ascii_code(char * string)
 	} while (*(string)++);
 
 }
+
+int str_rotate(char * string, unsigned int size,
+	       unsigned int rotate)
+{
+	unsigned int c_size = size;
+	char *t_string = (string + size);
+	char c_str;
+	int i;
+
+	if (rotate >= size || rotate < 0)
+		return -1;
+
+	/* A Zero rotate means the same string so do nothing */
+	if (!rotate)
+		return 0;
+
+	for (i = 0; i < rotate; i++) {
+		c_str = *(string + (size - 1));
+
+		while(--size) {
+			*--t_string = *(string + (size - 1));
+		}
+
+		*string = c_str;
+		t_string = (string + c_size);
+		size = c_size;
+	}
+	return 0;
+}
