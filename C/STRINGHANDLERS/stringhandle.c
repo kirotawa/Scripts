@@ -61,7 +61,7 @@ void str_replacechar(char * string, const char char_to_subs,
 		if (*(string) == char_to_subs)
 			*(string) = char_to_replace;
 
-	} while(*(string)++ != '\0');
+	} while (*(string)++ != '\0');
 
 }
 
@@ -93,7 +93,7 @@ int str_rotate(char * string, unsigned int size,
 	for (i = 0; i < rotate; i++) {
 		c_str = *(string + (size - 1));
 
-		while(--size) {
+		while (--size) {
 			*--t_string = *(string + (size - 1));
 		}
 
