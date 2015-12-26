@@ -29,11 +29,10 @@ class info:
     # import just once, so it's okay
     url = "https://weworkremotely.com/"
     # hardcoded by default, but in the future someone can pass
-    regex_motor = re.compile(r"[p|P]ython")
+    regex_motor = None
 
 
 def Tracking():
-
     request = urllib2.Request(info.url)
     response = urllib2.urlopen(request)
     document = response.read()
@@ -57,7 +56,13 @@ def Tracking():
     return jobs
 
 
-def handle_to_text():
+def handle_kword(word):
+    xreg = "[%s|%s]%s" % (word[0].lower(), word[0].upper(), word[1:].lower())
+    info.regex_motor = re.compile(r"%s" % xreg)
+
+
+def handle_to_text(kword):
+    handle_kword(kword)
     jobs = Tracking()
     text = ""
     for item in jobs:

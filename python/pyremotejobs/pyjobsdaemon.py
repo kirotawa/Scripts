@@ -23,5 +23,5 @@ def Notify(message="hello"):
 
 if __name__ == "__main__":
     while(True):
-        Notify(handle_to_text())
+        Notify(handle_to_text(sys.argv[1]))
         time.sleep(60*5)
