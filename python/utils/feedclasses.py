@@ -5,14 +5,14 @@ import subprocess
 
 from functools import wraps
 
-# These two functions are the responsible by provides a metaprogramming
-# that will allow we can pass a list of args to a generic test case
-# and this way it will executes as separated test cases in 'paralalel'.
-# Thus we will can see with one test fail or two, or none, separated.
+# These two functions are responsible to provide a metaprogramming
+# which will allow us to pass a list of args to a generic test case
+# this way it will execute as separated test cases in 'paralalel'.
+# Allowing us to see which test fail in a separated way.
 
 
 # Put the commands to be tested here in CMD_LIST
-CMD_LIST = ['']
+CMD_LIST = ['ls','du -Z .']
 
 
 def args(*args):
